@@ -10,14 +10,12 @@
     "start": "electron .",
     "dist": "electron-builder --win nsis"
   },
-  "dependencies": {
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
     "pdfjs-dist": "3.11.174",
     "pdf-lib": "1.17.1",
     "@fontsource/vazirmatn": "^5.0.0"
-  },
-  "devDependencies": {
-    "electron": "^33.0.0",
-    "electron-builder": "^25.0.0"
   },
   "build": {
     "appId": "app.folio.pdf",
@@ -53,6 +51,7 @@
       "allowToChangeInstallationDirectory": true,
       "perMachine": false,
       "artifactName": "Folio-Setup.${ext}"
-    }
+    },
+    "npmRebuild": false
   }
 }
