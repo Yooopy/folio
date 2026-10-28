@@ -1,0 +1,58 @@
+{
+  "name": "folio-pdf",
+  "productName": "Folio",
+  "version": "1.1.0",
+  "description": "Clean PDF reader and editor",
+  "author": "Folio",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "node scripts/prepare.js",
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "pdfjs-dist": "3.11.174",
+    "pdf-lib": "1.17.1",
+    "@fontsource/vazirmatn": "^5.0.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "app.folio.pdf",
+    "productName": "Folio",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "fileAssociations": [
+        {
+          "ext": "pdf",
+          "name": "PDF document",
+          "role": "Editor"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "artifactName": "Folio-Setup.${ext}"
+    }
+  }
+}
